@@ -1,47 +1,54 @@
 import {
+	Box,
 	Button,
 	ChakraProvider,
+	Container,
+	HStack,
+	Input,
+	InputGroup,
+	InputRightElement,
+	List,
+	ListItem,
+	Select,
+	VStack,
 } from '@chakra-ui/react';
-import React, { ReactElement, useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { ReactElement } from 'react';
 
 function App(): ReactElement {
-	const [count, setCount] = useState(0);
-
 	return (
 		<ChakraProvider>
-			<Button colorScheme="blue">Chakra Button</Button>
-			<div className="App">
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<p>Hello Vite + React!</p>
-					<p>
-						<button type="button" onClick={() => setCount((cnt) => cnt + 1)}>
-							{`count is: ${count}`}
-						</button>
-					</p>
-					<p>
-						<a
-							className="App-link"
-							href="https://reactjs.org"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							Learn React
-						</a>
-						{' | '}
-						<a
-							className="App-link"
-							href="https://vitejs.dev/guide/features.html"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							Vite Docs
-						</a>
-					</p>
-				</header>
-			</div>
+			<Container
+				mt="20"
+				border="1px"
+				borderColor="gray.400"
+				borderRadius="md"
+				p="4"
+				w="md"
+				h="md"
+			>
+				<VStack>
+					<InputGroup size="md">
+						<Input pr="4.5rem" placeholder="Enter todo" />
+						<InputRightElement width="4.5rem">
+							<Button h="1.75rem" size="sm">
+								Add
+							</Button>
+						</InputRightElement>
+					</InputGroup>
+					<List w="full">
+						<ListItem>Just Do it</ListItem>
+					</List>
+					<HStack w="full" justifyContent="flex-end">
+						<Box>
+							<Select placeholder="Select view">
+								<option value="all">All</option>
+								<option value="active">Active</option>
+								<option value="completed">Completed</option>
+							</Select>
+						</Box>
+					</HStack>
+				</VStack>
+			</Container>
 		</ChakraProvider>
 	);
 }

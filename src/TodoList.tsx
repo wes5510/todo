@@ -1,23 +1,17 @@
 import { List, ListItem } from '@chakra-ui/react';
 import React, { ReactElement } from 'react';
+import { useRecoilValue } from 'recoil';
+import todoAtoms from './todo.atoms';
 
-const todos = [
-	{
-		checked: false,
-		text: 'Just Do it',
-	},
-	{
-		checked: true,
-		text: 'Completed / Just Do it',
-	},
-];
-
-const TodoList = (): ReactElement => (
-	<List w="full">
-		{todos.map((t) => (
-			<ListItem>{t.text}</ListItem>
-		))}
-	</List>
-);
+const TodoList = (): ReactElement => {
+	const todos = useRecoilValue(todoAtoms.todoListState);
+	return (
+		<List w="full">
+			{todos.map((t) => (
+				<ListItem>{t.text}</ListItem>
+			))}
+		</List>
+	);
+};
 
 export default TodoList;
